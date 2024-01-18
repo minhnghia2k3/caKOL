@@ -17,6 +17,9 @@ This app is a simple e-commerce app, sell **booking KOL person** services.
 - MongoDB
 - Typescript
 
+## Working progess
+[Quá trình làm Project môn TMDT](https://docs.google.com/spreadsheets/d/1wnxpJp2PqYT8hvmxt96LQnm4gIdbGjxIvECGytQADVo/edit#gid=0)
+
 ## How to run
 1. Clone this repo.
 2. In CLI, `cp .env.example .env` and fill in the environment variables.
