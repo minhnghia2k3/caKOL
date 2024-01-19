@@ -16,6 +16,7 @@ This app is a simple e-commerce app, sell **booking KOL person** services.
 - TailwindCSS
 - MongoDB
 - Typescript
+- Zod validation
 
 ## Working progess
 [Quá trình làm Project môn TMDT](https://docs.google.com/spreadsheets/d/1wnxpJp2PqYT8hvmxt96LQnm4gIdbGjxIvECGytQADVo/edit#gid=0)
