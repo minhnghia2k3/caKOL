@@ -18,9 +18,9 @@ This app is a simple e-commerce app, sell **booking KOL person** services.
 - Typescript
 - Zod validation
 
-## Working progess
+## Resources
 [Quá trình làm Project môn TMDT](https://docs.google.com/spreadsheets/d/1wnxpJp2PqYT8hvmxt96LQnm4gIdbGjxIvECGytQADVo/edit#gid=0)
-
+[Whiteboard](https://app.eraser.io/workspace/5yi5furjiFpxBZqF3IMG?origin=share)
 ## How to run
 1. Clone this repo.
 2. In CLI, `cp .env.example .env` and fill in the environment variables.
