@@ -9,10 +9,10 @@ const config: Config = {
                 "gradient-conic": "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
             },
         },
-        colors: {
-            primary: "#E0752B",
-            secondary: "#ff5544",
-        },
+        // colors: {
+        //     primary: "#E0752B",
+        //     secondary: "#ff5544",
+        // },
     },
     plugins: [],
 }

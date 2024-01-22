@@ -21,6 +21,23 @@ body {
     background-color: #fff;
 }
 
+.primary-text {
+    color: #e0752b;
+}
+
+.second-text {
+    color: #ff5544;
+}
+
 .container {
-    padding: 10px 128px;
+    padding: 0 128px;
+}
+
+#site-navigation ul li:hover a {
+    color: #e0752b;
+}
+
+.active {
+    color: #e0752b;
+    font-weight: bold;
 }
