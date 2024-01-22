@@ -8,7 +8,7 @@ export default function Header() {
     return (
         <div className="container ">
             <div className="flex items-center justify-between space-x-4 xl:space-x-8">
-                <div className="flex justify-start  items-center">
+                <div className="flex justify-between items-center" style={{ width: "100%" }}>
                     <div className="site-logo text-4xl">
                         <Link href="/">
                             <h2 className="font-bold text-[#e19a48]">
