@@ -25,7 +25,7 @@ export default async function Main() {
         </div>
         <div className="right hidden sm:block">
           <Image
-            src="/asstes/model-bookkol.png"
+            src="/assets/model-bookkol.png"
             alt=""
             width={370}
             height={370}
@@ -36,7 +36,7 @@ export default async function Main() {
         <div className="about-booking jutify-center flex flex-col items-center gap-10 sm:flex-row">
           <div className="sm:w-2/3">
             <Image
-              src={"/asstes/bookingkol.jpg"}
+              src={"/assets/bookingkol.jpg"}
               alt=""
               width={600}
               height={600}

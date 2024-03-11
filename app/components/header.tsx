@@ -125,9 +125,12 @@ export default function Header() {
             </div>
           </div>
           <div className="flex flex-shrink-0 justify-end py-1.5 text-neutral-700 xl:py-3.5 dark:text-neutral-100">
-            <button className="rounded-full bg-blue-700 px-4 py-2 font-bold text-white hover:bg-blue-500">
-              Sign up
-            </button>
+            <Link
+              href="/login"
+              className="rounded-lg bg-blue-700 px-4 py-2 font-bold text-white hover:bg-blue-500"
+            >
+              Đăng nhập
+            </Link>
           </div>
         </div>
       </div>
