@@ -24,7 +24,7 @@ export default async function Main() {
                     <Image src="/asstes/model-bookkol.png" alt="" width={370} height={370}></Image>
                 </div>
             </div>
-            <div className="container mt-10 ">
+            <div className="mx-20 my-10 ">
                 <div className="about-booking flex gap-10 items-center jutify-center">
                     <div className="w-2/3">
                         <Image src={"/asstes/bookingkol.jpg"} alt="" width={600} height={600}></Image>
@@ -48,23 +48,67 @@ export default async function Main() {
                     </div>
                 </div>
             </div>
-            <div className="element-number w-100 p-10  bg-black text-white ">
-                <div className={`${rajd.className} text-3xl flex gap-5 justify-between`}>
+            <div className="element-number p-10 pt-20 bg-black text-white ">
+                <div className={`${rajd.className} text-3xl flex gap-5 justify-between text-center`}>
                     <div className="">
-                        <h3 className="text-[50px]">50,000+</h3>
-                        <p>KOLS</p>
+                        <h3 className="text-[80px]">50,000+</h3>
+                        <p className="mt-10 text-[#e19a48]">KOLS</p>
                     </div>
                     <div className="">
-                        <h3 className="text-[50px]">175000+</h3>
-                        <p>KOLS</p>
+                        <h3 className="text-[80px]">175000+</h3>
+                        <p className="mt-10 text-[#e19a48]">MEMBERSHIP</p>
                     </div>
                     <div className="">
-                        <h3 className="text-[50px]">1532</h3>
-                        <p>KOLS</p>
+                        <h3 className="text-[80px]">1532</h3>
+                        <p className="mt-10 text-[#e19a48]">PROJECT</p>
                     </div>
                     <div className="">
-                        <h3 className="text-[50px]">1168</h3>
-                        <p>KOLS</p>
+                        <h3 className="text-[80px]">1168</h3>
+                        <p className="mt-10 text-[#e19a48]">HAPPY CLIENTS</p>
+                    </div>
+                </div>
+            </div>
+            <div className="mt-20 flex items-center justify-center">
+                <div className="text-center w-[80%]">
+                    <h1 className="text-3xl text-[#e0752b] font-bold">PHƯƠNG PHÁP KOL MARKETING ĐỘC QUYỀN TẠI BOOKKOL</h1>
+                    <p className="my-10 text-xl">
+                        Trong 5 năm làm KOL Marketing và triển khai 1000+ dự án, chúng tôi đã chiêm nghiệm, tổng hợp, đúc kết được các phương pháp KOL Marketing tốt nhất, có thể áp dụng linh hoạt vào
+                        từng yêu cầu của chiến dịch
+                    </p>
+                </div>
+            </div>
+            <div className="mt-20 flex items-center justify-center">
+                <div className="text-center w-[80%]">
+                    <h1 className="text-3xl text-[#e0752b] font-bold">HÌNH ẢNH TIÊU BIỂU</h1>
+                    <p className="my-10 text-xl">
+                        <label className="text-black font-bold">ca</label>
+                        <label className="text-[#e0752b] font-bold">KOL</label> được rất nhiều khách hàng sự tin tưởng và giao trọng trách triển khai thành công nhiều chiến dịch lớn bởi sự uy tín, tận
+                        tâm với đội ngũ tuyệt vời !!!
+                    </p>
+                </div>
+            </div>
+            <div className="mt-20 flex items-center justify-center">
+                <div className="text-center w-[80%] ">
+                    <div className="flex items-center justify-between gap-20">
+                        <div className="w-[50%]">
+                            <h1 className="text-3xl text-[#e0752b] font-bold">CÂU HỎI THƯỜNG GẶP</h1>
+                            <p className="my-10 text-xl">
+                                <label className="text-[#e0752b] font-bold">KOL Marketing </label> là hình thức doanh nghiệp sử dụng <label className="text-[#e0752b] font-bold">KOL</label> trong kế
+                                hoạch Marketing của mình, nhằm tận dụng sức ảnh hưởng của họ tới công chúng, qua đó hiện thực các mục tiêu đã đề ra. Để bạn có cái nhìn tổng quan hơn về{" "}
+                                <label className="text-[#e0752b] font-bold">KOL Marketing </label>, hãy cùng
+                                <label className="text-black font-bold"> ca</label>
+                                <label className="text-[#e0752b] font-bold">KOL</label> tìm hiểu thêm về hình thức quảng cáo đầy tiềm năng này.
+                            </p>
+                        </div>
+                        <div className="text-left w-[50%] text-xl">
+                            <div className="mb-5 border-t-2 py-3">KOC là gì?</div>
+                            <div className="mb-5 border-t-2 py-3">Booking KOL là gì?</div>
+                            <div className="mb-5 border-t-2 py-3">KOL Marketing là gì?</div>
+                            <div className="mb-5 border-t-2 py-3">Giá Booking KOL giá bao nhiêu</div>
+                            <div className="mb-5 border-t-2 py-3">KOL Marketing có hiệu quả không</div>
+                            <div className="mb-5 border-t-2 py-3">Nên tự Booking KOL hay qua Agency</div>
+                            <div className="mb-5 border-t-2 py-3">Tiêu chí lựa chọn các Agency uy tín</div>
+                        </div>
                     </div>
                 </div>
             </div>
