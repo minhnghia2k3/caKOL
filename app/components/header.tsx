@@ -11,9 +11,9 @@ export default function Header() {
                 <div className="flex justify-between items-center" style={{ width: "100%" }}>
                     <div className="site-logo text-4xl">
                         <Link href="/">
-                            <h2 className="font-bold text-black">
-                                ca<span className="text-[#e0752b]">KOL</span>
-                            </h2>
+                            <Link href="/">
+              <Logo />
+            </Link>
                         </Link>
                     </div>
                     <div className="w-[100%] px-20 my-2 md:block hidden">
@@ -113,4 +113,3 @@ export default function Header() {
             </form>
         </div>
     );
-}
