@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import { fetchUsers } from "../lib/actions";
 import { Kaushan_Script, Rajdhani } from "next/font/google";
+import Link from "next/link";
 
 const kaushan = Kaushan_Script({ weight: "400", subsets: ["latin"] });
 const rajd = Rajdhani({ weight: "600", subsets: ["latin"] });
@@ -20,7 +21,7 @@ export default async function Main() {
             đến cho quý khách hàng trải nghiệm dịch vụ tốt nhất
           </p>
           <button className="rounded-full bg-red-400 px-4 py-2 font-bold text-white hover:bg-red-700">
-            <a href="">Tư vấn ngay</a>
+            <Link href="">Tư vấn ngay</Link>
           </button>
         </div>
         <div className="right hidden sm:block">
