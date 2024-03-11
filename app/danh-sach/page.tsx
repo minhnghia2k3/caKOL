@@ -15,8 +15,8 @@ const page = () => {
           />
         </div>
         <div className="col-span-3 flex flex-col items-center justify-center gap-2">
-          <h1 className="text-2xl">DANH SÁCH KOLS</h1>
-          <p className="text-center">
+          <h1 className="text-xl md:text-2xl">DANH SÁCH KOLS</h1>
+          <p className="text-center text-sm md:text-base">
             Tổng hợp danh sách KOLs có sức ảnh hưởng trên các phương tiện truyền
             thông. Giúp các Doanh nghiệp, thương hiệu, nhãn hàng thực hiện các
             chiến dịch Marketing hiệu quả.
