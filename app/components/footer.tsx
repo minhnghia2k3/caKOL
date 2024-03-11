@@ -1,9 +1,9 @@
-import React from "react"
+import React from "react";
 
 export default function Footer() {
     return (
         <div id="nc-footer-fixed-area" className="fixed bottom-0 inset-x-0 flex flex-col-reverse z-40">
-            <div className="FooterQuickNav z-40 flex-1 w-full block xl:hidden p-2 bg-white dark:bg-neutral-800 border-t border-neutral-300 dark:border-neutral-700 transition-transform duration-300 ease-in-out">
+            <div className="FooterQuickNav z-40 flex-1 w-full block md:hidden p-2 bg-white dark:bg-neutral-800 border-t border-neutral-300 dark:border-neutral-700 transition-transform duration-300 ease-in-out">
                 <div className="w-full max-w-screen-sm lg:max-w-screen-md flex justify-around mx-auto text-2xl text-center ">
                     <a href="https://bookkol.com/" className="FooterQuickNav__home flex flex-col items-center justify-between text-neutral-900 dark:text-neutral-50">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-5 h-5 sm:w-6 sm:h-6">
@@ -40,5 +40,5 @@ export default function Footer() {
                 <i className="las la-arrow-up"></i>
             </button>
         </div>
-    )
+    );
 }
