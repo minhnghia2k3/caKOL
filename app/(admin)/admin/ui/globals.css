@@ -1,0 +1,22 @@
+:root {
+    --bg: white;
+    --bgSoft: white;
+    --text: white;
+    --textSoft: #b7bac1;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #ffffff;
+    color: black;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
