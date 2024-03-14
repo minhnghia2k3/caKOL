@@ -1,68 +1,72 @@
-import { deleteUser } from '@/app/lib/actions';
-import { fetchUsers } from '../lib/data';
-import Pagination from '../ui/dashboard/pagination/pagination';
-import Search from '../ui/dashboard/search/search';
-import styles from '../ui/dashboard/users/users.module.css';
 import Image from 'next/image';
 import Link from 'next/link';
+import styles from '../ui/dashboard/products/products.module.css';
+import Search from '../ui/dashboard/search/search';
+import Pagination from '../ui/dashboard/pagination/pagination';
+// import { fetchProducts } from '@/app/admin/lib/data.js';
+// import { deleteProduct } from '/app/lib/actions';
 
-const UsersPage = async ({ searchParams }) => {
+const ProductsPage = async ({ searchParams }) => {
     const q = searchParams?.q || '';
     const page = searchParams?.page || 1;
-    const { count, users } = await fetchUsers(q, page);
+    // const { count, products } = await fetchProducts(q, page);
 
     return (
         <div className={styles.container}>
             <div className={styles.top}>
-                <Search placeholder="Search for a user..." />
-                <Link href="/admin/users/add">
+                <Search placeholder="Search for a product..." />
+                <Link href="/admin/products/add">
                     <button className={styles.addButton}>Add New</button>
                 </Link>
             </div>
             <table className={styles.table}>
                 <thead>
                     <tr>
-                        <td>Name</td>
-                        <td>Email</td>
+                        <td>Title</td>
+                        <td>Description</td>
+                        <td>Price</td>
                         <td>Created At</td>
-                        <td>Role</td>
-                        <td>Status</td>
+                        <td>Stock</td>
                         <td>Action</td>
                     </tr>
                 </thead>
                 <tbody>
-                    {users.map((user) => (
-                        <tr key={user.id}>
+                    {/* {products.map((product) => (
+                        <tr key={product.id}>
                             <td>
-                                <div className={styles.user}>
+                                <div className={styles.product}>
                                     <Image
-                                        src={user.img || '/noavatar.png'}
+                                        src={product.img || '/noproduct.jpg'}
                                         alt=""
                                         width={40}
                                         height={40}
-                                        className={styles.userImage}
+                                        className={styles.productImage}
                                     />
-                                    {user.username}
+                                    {product.title}
                                 </div>
                             </td>
-                            <td>{user.email}</td>
-                            <td>{user.createdAt?.toString().slice(4, 16)}</td>
-                            <td>{user.isAdmin ? 'Admin' : 'Client'}</td>
-                            <td>{user.isActive ? 'active' : 'passive'}</td>
+                            <td>{product.desc}</td>
+                            <td>${product.price}</td>
+                            <td>
+                                {product.createdAt?.toString().slice(4, 16)}
+                            </td>
+                            <td>{product.stock}</td>
                             <td>
                                 <div className={styles.buttons}>
-                                    <Link href={`/dashboard/users/${user.id}`}>
+                                    <Link
+                                        href={`/dashboard/products/${product.id}`}
+                                    >
                                         <button
                                             className={`${styles.button} ${styles.view}`}
                                         >
                                             View
                                         </button>
                                     </Link>
-                                    <form action={deleteUser}>
+                                    <form action={deleteProduct}>
                                         <input
                                             type="hidden"
                                             name="id"
-                                            value={user.id}
+                                            value={product.id}
                                         />
                                         <button
                                             className={`${styles.button} ${styles.delete}`}
@@ -73,12 +77,12 @@ const UsersPage = async ({ searchParams }) => {
                                 </div>
                             </td>
                         </tr>
-                    ))}
+                    ))} */}
                 </tbody>
             </table>
-            <Pagination count={count} />
+            {/* <Pagination count={count} /> */}
         </div>
     );
 };
 
-export default UsersPage;
+export default ProductsPage;

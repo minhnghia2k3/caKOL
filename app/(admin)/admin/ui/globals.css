@@ -12,8 +12,8 @@
 }
 
 body {
-    background-color: var(--bg);
-    color: var(--text);
+    background-color: #ffffff;
+    color: black;
 }
 
 a {
