@@ -7,16 +7,16 @@ const Page = ({ params }: { params: { slug: string } }) => {
     const [isArrangeTopToBottom, setIsArrangeTopToBottom] =
         useState<boolean>(true);
     return (
-        <div className="_container">
-            <div className="px-16 mt-8">
+        <div className="_container flex flex-col items-center justify-center md:items-start px-8">
+            <div className="md:px-16 my-8">
                 <p className="text-sm text-gray-500">
                     <Link href="/">Trang chủ</Link>
                     {' / '}
                     {params.slug}
                 </p>
-                <div className="_filter flex items-center justify-between">
+                <div className="_filter flex items-start">
                     <p>Hiển thị 1-10 của 70 kết quả</p>
-                    {isArrangeTopToBottom ? (
+                    {/* {isArrangeTopToBottom ? (
                         <ArrowDownWideNarrow
                             className="cursor-pointer text-gray-500 hover:opacity-80"
                             onClick={() => setIsArrangeTopToBottom(false)}
@@ -26,7 +26,7 @@ const Page = ({ params }: { params: { slug: string } }) => {
                             className="cursor-pointer text-gray-500 hover:opacity-80"
                             onClick={() => setIsArrangeTopToBottom(true)}
                         />
-                    )}
+                    )} */}
                 </div>
             </div>
 
