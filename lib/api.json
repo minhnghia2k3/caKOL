@@ -1,0 +1,22 @@
+{
+    "sanPham": [
+        {
+            "id": 1,
+            "tenSanPham": "Áo thun nam",
+            "hinhAnh": "url_hinh_anh_ao_thun_nam.jpg",
+            "donGia": 200000
+        },
+        {
+            "id": 2,
+            "tenSanPham": "Quần jeans nữ",
+            "hinhAnh": "url_hinh_anh_quan_jeans_nu.jpg",
+            "donGia": 350000
+        },
+        {
+            "id": 3,
+            "tenSanPham": "Giày thể thao",
+            "hinhAnh": "url_hinh_anh_giay_the_thao.jpg",
+            "donGia": 500000
+        }
+    ]
+}

@@ -4,7 +4,7 @@ import React from 'react';
 
 const page = () => {
     return (
-        <div>
+        <div className=" overflow-hidden">
             <div className="_banner grid min-h-96 w-screen grid-cols-5">
                 <div className="col-span-1 flex items-end justify-start">
                     <Image

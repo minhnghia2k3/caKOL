@@ -96,34 +96,10 @@ export default function Header() {
                                         </li>
                                         <li className="">
                                             <Link
-                                                href="/danhsachkol"
+                                                href="/danh-sach"
                                                 className="menu-link main-menu-link"
                                             >
                                                 Danh sách KOLs
-                                            </Link>
-                                        </li>
-                                        <li className="">
-                                            <Link
-                                                href="/bao-gia-kol/"
-                                                className="menu-link main-menu-link"
-                                            >
-                                                Báo Giá KOL
-                                            </Link>
-                                        </li>
-                                        <li className="">
-                                            <Link
-                                                href="/blog/"
-                                                className="menu-link main-menu-link"
-                                            >
-                                                Blog
-                                            </Link>
-                                        </li>
-                                        <li className="">
-                                            <Link
-                                                href="/lien-he-bookkol"
-                                                className="menu-link main-menu-link"
-                                            >
-                                                Liên Hệ
                                             </Link>
                                         </li>
                                     </ul>
