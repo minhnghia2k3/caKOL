@@ -8,11 +8,29 @@ const saira = Saira_Condensed({ weight: '700', subsets: ['latin'] });
 
 export default function About() {
     return (
-        <div className="about p-5 sm:p-10 md:p-20">
-            <div className="text-center mt-5">
-                <h2 className={`${saira.className} text-[#cf9236] text-4xl `}>
-                    GIỚI THIỆU CAKKOL
-                </h2>
+        <div className="about sm:p-10 md:p-0 overflow-hidden">
+            <div className="_banner grid min-h-96 w-screen grid-cols-5">
+                <div className="col-span-1 flex items-end justify-start hidden sm:block">
+                    <Image
+                        src="/assets/left-banner.png"
+                        width={400}
+                        height={400}
+                        alt="Left banner"
+                    />
+                </div>
+                <div className="col-span-5 sm:col-span-3 flex flex-col items-center justify-center gap-2">
+                    <h1 className="text-3xl md:text-2xl font-bold text-[#cf9236]">
+                        GIỚI THIỆU CAKOL
+                    </h1>
+                </div>
+                <div className="col-span-1 flex items-end justify-end hidden sm:block">
+                    <Image
+                        src="/assets/right_banner.png"
+                        width={400}
+                        height={400}
+                        alt="Right banner"
+                    />
+                </div>
             </div>
             <div className="my-20 text-center">
                 <h2 className="text-2xl font-bold mb-2">WHO ARE WE?</h2>
@@ -40,7 +58,7 @@ export default function About() {
                 </p>
                 <button>0888 32 9999</button>
             </div>
-            <div className="text-4xl font-bold text-center">
+            <div className="text-4xl font-bold text-center translate-x-[-113px]">
                 <h2 className="">We have</h2>
                 <h2 className="text-[#f5b451] ml-[250px] py-10 text-[100px]">
                     5+
@@ -53,7 +71,7 @@ export default function About() {
                 >
                     NHÂN SỰ TIÊU BIỂU
                 </h2>
-                <div className="border border-black rounded-lg p-10 my-5">
+                <div className="border border-black rounded-lg p-5 sm:p-10 m-3 sm:my-5">
                     <h2 className="text-2xl font-bold">WE LOVE BOOKKOL ❤️</h2>
                     <p>
                         Nhân sự là nhân tố quan trọng nhất.{' '}
@@ -135,7 +153,7 @@ export default function About() {
                         </div>
                     </div>
                 </div>
-                <div className="text-center">
+                <div className="text-center mb-25">
                     <h2
                         className={`${saira.className} text-[#cf9236] text-4xl mt-20 `}
                     >
