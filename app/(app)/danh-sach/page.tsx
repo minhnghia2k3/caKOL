@@ -2,7 +2,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 
-const page = () => {
+const page = async () => {
+    const envv = process.env.NEXT_PUBLIC_HOST;
+    const res = await fetch(`${envv}/categories`);
+    const categories = await res.json();
     return (
         <div className=" overflow-hidden">
             <div className="_banner grid min-h-96 w-screen grid-cols-5">
@@ -32,23 +35,21 @@ const page = () => {
                 </div>
             </div>
             <div className="_container grid grid-cols-1 gap-4 bg-gradient-to-r from-orange-100 p-14 md:grid-cols-4">
-                {
-                    // Create a boilerplate of 10 Arrays for render
-                    Array.from({ length: 10 }).map((_, index) => (
-                        <Link
-                            href="/danh-sach/dj"
-                            key={index}
-                            className="relative h-80 w-64 rounded-lg"
-                        >
-                            <Image
-                                src="/danh-sach/booking-dj.png"
-                                fill
-                                alt="Category image"
-                                className="rounded-lg object-cover"
-                            />
-                        </Link>
-                    ))
-                }
+                {categories.map((item: any, index: any) => (
+                    <Link
+                        href={`/danh-sach/${item.slug}`}
+                        key={index}
+                        className="relative h-80 w-64 rounded-lg"
+                    >
+                        <p>tests</p>
+                        <Image
+                            src={`${envv}/uploads/categories/${item.image}`}
+                            fill
+                            alt="Category image"
+                            className="rounded-lg object-cover"
+                        />
+                    </Link>
+                ))}
             </div>
         </div>
     );

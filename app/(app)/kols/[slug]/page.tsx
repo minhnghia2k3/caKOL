@@ -1,233 +1,288 @@
-import { Label } from '@/components/ui/label';
-import { RadioGroupItem, RadioGroup } from '@/components/ui/radio-group';
 import {
-    SelectValue,
-    SelectTrigger,
-    SelectItem,
-    SelectContent,
-    Select
-} from '@/components/ui/select';
+    Card,
+    CardContent,
+    CardDescription,
+    CardFooter,
+    CardHeader,
+    CardTitle
+} from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
+import Link from 'next/link';
+import Star from '@/app/components/star';
 
-export default function Component() {
+const Page = ({ params }: { params: { slug: string } }) => {
     return (
-        <div className="grid gap-6 items-start max-w-6xl px-4 mx-auto py-6">
-            <div className="grid gap-6 md:gap-3 items-start order-1">
-                <div className="flex md:hidden items-start">
-                    <div className="grid gap-4">
-                        <h1 className="font-bold text-2xl sm:text-3xl">
-                            CottonSculpt Prism Tee: The Cozy Chromatic Blend
-                        </h1>
-                        <div className="flex items-center gap-4">
-                            <div className="flex items-center gap-0.5">
-                                <StarIcon className="w-5 h-5 fill-primary" />
-                                <StarIcon className="w-5 h-5 fill-primary" />
-                                <StarIcon className="w-5 h-5 fill-primary" />
-                                <StarIcon className="w-5 h-5 fill-muted stroke-muted-foreground" />
-                                <StarIcon className="w-5 h-5 fill-muted stroke-muted-foreground" />
-                            </div>
+        <div className="p-5 md:px-20 py-10">
+            <div className="">
+                <p className="text-sm text-black">
+                    <Link href="/">Trang chủ</Link>
+                    {' / '}
+                    <label className="text-gray-500">{params.slug}</label>
+                </p>
+            </div>
+            <div className="flex flex-col md:flex-row mt-5">
+                <div className="md:w-[50%] flex flex-row w-[100%] ">
+                    <div className="md:w-[15%] flex flex-col gap-5 w-[20%]">
+                        <div className="overflow-hidden w-[50px] h-[50px] md:w-[100px] md:h-[100px] rounded-lg object-cover border-2 border-black">
+                            <Image
+                                src="/assets/loi-ich-khi-booking-kol.png"
+                                alt="Category image"
+                                width={100}
+                                height={100}
+                                className=""
+                            />
+                        </div>
+                        <div className="overflow-hidden w-[50px] h-[50px] md:w-[100px] md:h-[100px] rounded-lg object-cover opacity-50">
+                            <Image
+                                src="/assets/loi-ich-khi-booking-kol.png"
+                                alt="Category image"
+                                width={100}
+                                height={100}
+                                className=""
+                            />
+                        </div>{' '}
+                        <div className="overflow-hidden w-[50px] h-[50px] md:w-[100px] md:h-[100px] rounded-lg object-cover opacity-50">
+                            <Image
+                                src="/assets/loi-ich-khi-booking-kol.png"
+                                alt="Category image"
+                                width={100}
+                                height={100}
+                                className=""
+                            />
+                        </div>{' '}
+                        <div className="overflow-hidden w-[50px] h-[50px] md:w-[100px] md:h-[100px] rounded-lg object-cover opacity-50">
+                            <Image
+                                src="/assets/loi-ich-khi-booking-kol.png"
+                                alt="Category image"
+                                width={100}
+                                height={100}
+                                className=""
+                            />
                         </div>
                     </div>
-                </div>
-                <div className="grid gap-4 text-sm leading-loose md:hidden">
-                    <p>
-                        Introducing the Acme Prism T-Shirt, a perfect blend of
-                        style and comfort for the modern individual. This tee is
-                        crafted with a meticulous composition of 60% combed
-                        ringspun cotton and 40% polyester jersey, ensuring a
-                        soft and breathable fabric that feels gentle against the
-                        skin.
-                    </p>
-                    <p>
-                        Lorem ipsum, dolor sit amet consectetur adipisicing
-                        elit. Facilis consequatur provident enim facere
-                        reiciendis nemo ea delectus quia laboriosam sequi minima
-                        cum, alias molestias mollitia, autem itaque ipsam sed
-                        quas.
-                    </p>
-                </div>
-                <div className="overflow-auto">
-                    <div className="flex gap-4 [&_img]:shrink-0">
+                    <div className="overflow-hidden md:h-[100%] w-[100%] relative rounded-lg mx-5">
                         <Image
-                            alt="Product Image"
-                            className="aspect-square object-cover border border-gray-200 w-full rounded-lg overflow-hidden dark:border-gray-800"
-                            height={400}
-                            src="/assets/left-banner.png"
-                            width={400}
+                            src="/assets/loi-ich-khi-booking-kol.png"
+                            alt="Category image"
+                            fill
+                            className="absolute object-cover"
+                        />
+                    </div>
+                </div>
+                <div className="mt-5 sm:mt-0 w-[100%] md:w-[50%]">
+                    <h1 className="text-2xl font-bold">Ca Sĩ Miu Lê</h1>
+                    <div className="star flex gap-1 mt-2">
+                        <Star />
+                        <Star />
+                        <Star />
+                        <Star />
+                        <Star />
+                        <p className="text-sm text-gray-500">
+                            (1 đánh giá của khách hàng)
+                        </p>
+                    </div>
+                    <div className="flex flex-col gap-2 mt-10 text-gray-700">
+                        <h3 className="font-bold">
+                            <label className="text-[#ff6600] mr-2">➤</label>
+                            Nơi sống/ làm việc:
+                            <label className="font-normal ml-2">HCM</label>
+                        </h3>
+                        <h3 className="font-bold">
+                            <label className="text-[#ff6600] mr-2">➤</label>
+                            Năm sinh:
+                            <label className="font-normal  ml-2">1991</label>
+                        </h3>
+                        <h3 className="font-bold">
+                            <label className="text-[#ff6600] mr-2">➤</label>
+                            Facebook:
+                            <a
+                                href="#"
+                                className="font-normal text-blue-500 cursor-pointer  ml-2"
+                            >
+                                Miu Lê
+                            </a>
+                        </h3>
+                        <h3 className="font-bold">
+                            <label className="text-[#ff6600] mr-2">➤</label>
+                            Tiktok:
+                            <a
+                                href="#"
+                                className="font-normal text-blue-500 cursor-pointer  ml-2"
+                            >
+                                Miu Lê
+                            </a>
+                        </h3>
+                        <h3 className="font-bold">
+                            <label className="text-[#ff6600] mr-2">➤</label>
+                            Instagram:
+                            <a
+                                href="#"
+                                className="font-normal text-blue-500 cursor-pointer  ml-2"
+                            >
+                                miule5791
+                            </a>
+                        </h3>
+                        <h3 className="font-bold">
+                            <label className="text-[#ff6600] mr-2">➤</label>
+                            Youtube:
+                            <a
+                                href="#"
+                                className="font-normal text-blue-500 cursor-pointer  ml-2"
+                            >
+                                Miu Lê Official
+                            </a>
+                        </h3>
+                    </div>
+                    <div className="mt-5">
+                        <Button className="bg-[#1d4ed8] w-[100%] rounded-xl">
+                            Nhận báo giá
+                        </Button>
+                    </div>
+                    <div className="text-sm mt-10 pt-5 border-t border-[#ccc] text-gray-500">
+                        <h3>
+                            Danh mục:{' '}
+                            <b>
+                                Ca sĩ, Nghệ Sĩ - Diễn viên, TikToker, Youtuber
+                            </b>
+                        </h3>
+                        <h3>
+                            Từ khoá <b>Ca Sĩ Miu Lê, Miu Lê</b>
+                        </h3>
+                    </div>
+                </div>
+            </div>
+            <div className="mt-20 pt-5 w-[70%]">
+                <Tabs defaultValue="account" className=" bg-white ">
+                    <TabsList className="bg-white  ">
+                        <TabsTrigger
+                            className="data-[state=active]:bg-black data-[state=active]:text-white rounded-full bg-[#eee] text-gray-500 mr-3"
+                            value="account"
+                        >
+                            Mô tả
+                        </TabsTrigger>
+                        <TabsTrigger
+                            className="data-[state=active]:bg-black data-[state=active]:text-white rounded-full bg-[#eee] text-gray-500 mr-3"
+                            value="password"
+                        >
+                            Đánh giá
+                        </TabsTrigger>
+                    </TabsList>
+                    <TabsContent value="account">
+                        <div className="border-t pt-5 border-[#ccc] ">
+                            <h1 className="font-bold text-xl">Mô tả</h1>
+                            <p className="text-sm text-gray-500">
+                                Miu Lê là một ca sĩ trẻ nổi tiếng của Việt Nam,
+                                sở hữu giọng hát đầy cảm xúc và phong cách biểu
+                                diễn sôi động, cá tính. Với nhiều ca khúc hit
+                                như “Người Yêu Cũ”, “Giấc Mơ Trưa”, “Em Nhớ
+                                Anh”, “Cho Tôi Lang Thang” và “Chạm Đáy Nỗi
+                                Đau”, Miu Lê đã khẳng định được vị trí của mình
+                                trong làng nhạc Việt Nam. Ngoài sự nghiệp âm
+                                nhạc, Miu Lê còn là một diễn viên trẻ triển vọng
+                                và cũng là một nghệ sĩ đa tài với những vai diễn
+                                đa dạng trên sân khấu, truyền hình và điện ảnh.
+                                Với tài năng và nhan sắc nổi bật, cô đã từng
+                                đoạt giải Á hậu Thế giới Việt Nam và được đánh
+                                giá là một trong những nữ nghệ sĩ tiềm năng của
+                                thế hệ trẻ. Nếu bạn là một fan của Miu Lê hoặc
+                                đang quan tâm đến sự nghiệp và sản phẩm âm nhạc
+                                của cô, hãy truy cập vào trang web chính thức
+                                của Miu Lê để cập nhật thông tin mới nhất về cô
+                                và những sản phẩm âm nhạc sắp tới. Đừng quên đón
+                                xem các chương trình âm nhạc hay các bộ phim,
+                                chương trình truyền hình mà Miu Lê tham gia để
+                                trải nghiệm những tác phẩm đẳng cấp của cô. Miu
+                                Lê sẽ là một lựa chọn tuyệt vời cho những ai yêu
+                                thích nhạc pop và đang tìm kiếm những giây phút
+                                giải trí thú vị. Mới đây, nữ diễn viên này cho
+                                biết, cô đã nhận lời tham gia bộ phim “Nắng 2”.
+                                Trước đó, cô đóng vai chính trong bộ phim “Cô
+                                gái đến từ hôm qua”.
+                            </p>
+                        </div>
+                    </TabsContent>
+                    <TabsContent value="password">
+                        <div className="border-t pt-5 border-[#ccc] ">
+                            <h1 className="font-bold text-xl">
+                                1 đánh giá cho ca sĩ Miu Lê
+                            </h1>
+                            <div className="flex items-center mt-10 bg-[#ddd] p-3">
+                                <div className="w-[50px] h-[50px] relative bg-[#ccc] rounded-full overflow-hidden border">
+                                    <Image
+                                        fill
+                                        src="/assets/noavatar.png"
+                                        alt=""
+                                        className="absolute shadow-xl "
+                                    />
+                                </div>
+                                <div className="ml-3 flex flex-col gap-2">
+                                    <div className="flex gap-1">
+                                        <Star />
+                                        <Star />
+                                        <Star />
+                                        <Star />
+                                        <Star />
+                                    </div>
+                                    <h1 className="text-black">
+                                        Đình mạnh - 21/02/2024
+                                    </h1>
+                                    <p>xinh quá chị ơi</p>
+                                </div>
+                            </div>
+                        </div>
+                    </TabsContent>
+                </Tabs>
+            </div>
+            <div className="my-20 border-t border-[#ccc] pt-10">
+                <h1 className="text-2xl font-bold">KOL tương tự</h1>
+                <div className="flex h-[300px] w-[100%] gap-8 mt-5">
+                    <div className="object-cover relative w-[25%]">
+                        <Image
+                            src="/assets/loi-ich-khi-booking-kol.png"
+                            alt="Category image"
+                            layout="fill"
+                            className=" rounded-xl "
+                        />
+                        <div className="flex gap-1 absolute end-[20px]">
+                            <Star />
+                            <Star />
+                            <Star />
+                            <Star />
+                            <Star />
+                        </div>
+                    </div>
+                    <div className="relative w-[25%]">
+                        <Image
+                            src="/assets/loi-ich-khi-booking-kol.png"
+                            alt="Category image"
+                            fill
+                            className="absolute rounded-xl"
+                        />
+                    </div>
+                    <div className="relative w-[25%]">
+                        <Image
+                            src="/assets/loi-ich-khi-booking-kol.png"
+                            alt="Category image"
+                            fill
+                            className="absolute rounded-xl"
+                        />
+                    </div>
+                    <div className="relative w-[25%]">
+                        <Image
+                            src="/assets/loi-ich-khi-booking-kol.png"
+                            alt="Category image"
+                            fill
+                            className="absolute rounded-xl"
                         />
                     </div>
                 </div>
             </div>
-            <div className="grid gap-4 md:gap-8">
-                <div className="hidden md:flex items-start">
-                    <div className="grid gap-4">
-                        <h1 className="font-bold text-3xl lg:text-4xl">
-                            CottonSculpt Prism Tee: The Cozy Chromatic Blend
-                        </h1>
-                        <div className="flex items-center gap-4">
-                            <div className="flex items-center gap-0.5">
-                                <StarIcon className="w-5 h-5 fill-primary" />
-                                <StarIcon className="w-5 h-5 fill-primary" />
-                                <StarIcon className="w-5 h-5 fill-primary" />
-                                <StarIcon className="w-5 h-5 fill-muted stroke-muted-foreground" />
-                                <StarIcon className="w-5 h-5 fill-muted stroke-muted-foreground" />
-                            </div>
-                        </div>
-                        <div className="grid gap-4 text-sm leading-loose">
-                            <p>
-                                Lorem ipsum dolor sit amet consectetur
-                                adipisicing elit. Minima hic excepturi commodi
-                                omnis praesentium saepe id earum officiis
-                                ratione molestiae quod dignissimos dicta
-                                placeat, repellendus, ab quidem autem. Eligendi,
-                                reprehenderit.
-                            </p>
-                            <p>
-                                Lorem ipsum dolor sit amet consectetur
-                                adipisicing elit. Porro obcaecati quam minus
-                                tenetur, consequuntur explicabo perspiciatis
-                                dignissimos dicta necessitatibus ex dolorum
-                                iusto molestiae qui tempore quia a, laborum amet
-                                ad.
-                            </p>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur
-                                adipisicing elit. Rem ex perferendis, totam sed
-                                adipisci, quaerat unde expedita dolores
-                                veritatis saepe porro alias eos a officiis
-                                doloremque enim beatae ea cum?
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <form className="grid gap-4 md:gap-8">
-                    <div className="text-4xl font-bold">$99</div>
-                    <div className="grid gap-2">
-                        <Label className="text-base" htmlFor="color">
-                            Color
-                        </Label>
-                        <RadioGroup
-                            className="flex items-center gap-2"
-                            defaultValue="black"
-                            id="color"
-                        >
-                            <Label
-                                className="border cursor-pointer rounded-md p-2 flex items-center gap-2 [&:has(:checked)]:bg-gray-100 dark:[&:has(:checked)]:bg-gray-800"
-                                htmlFor="color-black"
-                            >
-                                <RadioGroupItem
-                                    id="color-black"
-                                    value="black"
-                                />
-                                Black
-                            </Label>
-                            <Label
-                                className="border cursor-pointer rounded-md p-2 flex items-center gap-2 [&:has(:checked)]:bg-gray-100 dark:[&:has(:checked)]:bg-gray-800"
-                                htmlFor="color-white"
-                            >
-                                <RadioGroupItem
-                                    id="color-white"
-                                    value="white"
-                                />
-                                White
-                            </Label>
-                            <Label
-                                className="border cursor-pointer rounded-md p-2 flex items-center gap-2 [&:has(:checked)]:bg-gray-100 dark:[&:has(:checked)]:bg-gray-800"
-                                htmlFor="color-blue"
-                            >
-                                <RadioGroupItem id="color-blue" value="blue" />
-                                Blue
-                            </Label>
-                        </RadioGroup>
-                    </div>
-                    <div className="grid gap-2">
-                        <Label className="text-base" htmlFor="size">
-                            Size
-                        </Label>
-                        <RadioGroup
-                            className="flex items-center gap-2"
-                            defaultValue="m"
-                            id="size"
-                        >
-                            <Label
-                                className="border cursor-pointer rounded-md p-2 flex items-center gap-2 [&:has(:checked)]:bg-gray-100 dark:[&:has(:checked)]:bg-gray-800"
-                                htmlFor="size-xs"
-                            >
-                                <RadioGroupItem id="size-xs" value="xs" />
-                                XS
-                            </Label>
-                            <Label
-                                className="border cursor-pointer rounded-md p-2 flex items-center gap-2 [&:has(:checked)]:bg-gray-100 dark:[&:has(:checked)]:bg-gray-800"
-                                htmlFor="size-s"
-                            >
-                                <RadioGroupItem id="size-s" value="s" />S
-                                {'\n                          '}
-                            </Label>
-                            <Label
-                                className="border cursor-pointer rounded-md p-2 flex items-center gap-2 [&:has(:checked)]:bg-gray-100 dark:[&:has(:checked)]:bg-gray-800"
-                                htmlFor="size-m"
-                            >
-                                <RadioGroupItem id="size-m" value="m" />M
-                                {'\n                          '}
-                            </Label>
-                            <Label
-                                className="border cursor-pointer rounded-md p-2 flex items-center gap-2 [&:has(:checked)]:bg-gray-100 dark:[&:has(:checked)]:bg-gray-800"
-                                htmlFor="size-l"
-                            >
-                                <RadioGroupItem id="size-l" value="l" />L
-                                {'\n                          '}
-                            </Label>
-                            <Label
-                                className="border cursor-pointer rounded-md p-2 flex items-center gap-2 [&:has(:checked)]:bg-gray-100 dark:[&:has(:checked)]:bg-gray-800"
-                                htmlFor="size-xl"
-                            >
-                                <RadioGroupItem id="size-xl" value="xl" />
-                                XL
-                            </Label>
-                        </RadioGroup>
-                    </div>
-                    <div className="grid gap-2">
-                        <Label className="text-base" htmlFor="quantity">
-                            Quantity
-                        </Label>
-                        <Select defaultValue="1">
-                            <SelectTrigger className="w-24">
-                                <SelectValue placeholder="Select" />
-                            </SelectTrigger>
-                            <SelectContent>
-                                <SelectItem value="1">1</SelectItem>
-                                <SelectItem value="2">2</SelectItem>
-                                <SelectItem value="3">3</SelectItem>
-                                <SelectItem value="4">4</SelectItem>
-                                <SelectItem value="5">5</SelectItem>
-                            </SelectContent>
-                        </Select>
-                    </div>
-                    <div className="flex flex-col gap-2 min-[400px]:flex-row">
-                        <Button size="lg">Add to cart</Button>
-                    </div>
-                </form>
-            </div>
         </div>
     );
-}
+};
 
-function StarIcon(props: any) {
-    return (
-        <svg
-            {...props}
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-        >
-            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-        </svg>
-    );
-}
+export default Page;
