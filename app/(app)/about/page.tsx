@@ -3,9 +3,14 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Saira_Condensed } from 'next/font/google';
+import { Metadata } from 'next';
 
 const saira = Saira_Condensed({ weight: '700', subsets: ['latin'] });
-
+export const metadata: Metadata = {
+    title: 'CaKOL | Về chúng tôi',
+    description:
+        'caKOL - Tổng hợp danh sách KOLs có sức ảnh hưởng trên các phương tiện truyền thông. Giúp các Doanh nghiệp, thương hiệu, nhãn hàng thực hiện các chiến dịch Marketing hiệu quả.'
+};
 export default function About() {
     return (
         <div className="about sm:p-10 md:p-0 overflow-hidden">

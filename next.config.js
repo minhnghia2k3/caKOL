@@ -1,4 +1,12 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {}
+const nextConfig = {
+    images: {
+        remotePatterns: [
+            {
+                hostname: 'server.cakol.id.vn'
+            }
+        ]
+    }
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

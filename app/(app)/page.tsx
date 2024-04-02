@@ -1,11 +1,17 @@
-import Main from "../components/main";
-import seed from "@/scripts/seed";
-export default async function Home() {
-  // await seed(); // Seed user data
+import { Metadata } from 'next';
+import Main from '../components/main';
 
-  return (
-    <>
-      <Main />
-    </>
-  );
+export const metadata: Metadata = {
+    title: 'CaKOL | Trang chủ',
+    description: 'caKOL - Nền Tảng KOL Marketing Chuyên Nghiệp'
+};
+
+export default async function Home() {
+    // await seed(); // Seed user data
+
+    return (
+        <>
+            <Main />
+        </>
+    );
 }

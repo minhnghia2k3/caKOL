@@ -1,18 +1,29 @@
-'use client';
 import Link from 'next/link';
-import React, { useState } from 'react';
-import { ArrowDownWideNarrow, ArrowUpNarrowWide } from 'lucide-react';
-import Image from 'next/image';
+import React from 'react';
+import { Metadata } from 'next';
+import DanhSachKOLs from '@/app/components/danh-sach-kols';
+
+type Props = {
+    params: { slug: string };
+};
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+    // fetch data
+    return {
+        title: `CaKOL | Danh sách KOLs | ${params.slug.toUpperCase()}`,
+        description:
+            'caKOL - Tổng hợp danh sách KOLs có sức ảnh hưởng trên các phương tiện truyền thông. Giúp các Doanh nghiệp, thương hiệu, nhãn hàng thực hiện các chiến dịch Marketing hiệu quả.'
+    };
+}
+
 const Page = ({ params }: { params: { slug: string } }) => {
-    const [isArrangeTopToBottom, setIsArrangeTopToBottom] =
-        useState<boolean>(true);
     return (
-        <div className="_container flex flex-col items-center justify-center md:items-start px-8">
+        <div className="_container flex flex-col items-center justify-start md:items-start px-8 min-h-screen">
             <div className="md:px-16 my-8">
-                <p className="text-sm text-gray-500">
+                <p className="text-sm text-black">
                     <Link href="/">Trang chủ</Link>
                     {' / '}
-                    {params.slug}
+                    <label className="text-gray-500">{params.slug}</label>
                 </p>
                 <div className="_filter flex items-start">
                     <p>Hiển thị 1-10 của 70 kết quả</p>
@@ -29,26 +40,7 @@ const Page = ({ params }: { params: { slug: string } }) => {
                     )} */}
                 </div>
             </div>
-
-            <div className="_container grid grid-cols-1 gap-4 px-14 md:grid-cols-4">
-                {
-                    // Create a boilerplate of 10 Arrays for render
-                    Array.from({ length: 10 }).map((_, index) => (
-                        <Link
-                            href="/"
-                            key={index}
-                            className="relative h-80 w-64 rounded-lg"
-                        >
-                            <Image
-                                src="/danh-sach/booking-dj.png"
-                                fill
-                                alt="Category image"
-                                className="rounded-lg object-cover"
-                            />
-                        </Link>
-                    ))
-                }
-            </div>
+            <DanhSachKOLs params={params} />
         </div>
     );
 };
