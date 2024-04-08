@@ -31,7 +31,7 @@ const DanhSachKOLs = ({ params }: { params: { slug: string } }) => {
                                 className="relative h-80 w-64 rounded-lg text-center hover:text-red-500 hover:shadow-xl"
                             >
                                 <Image
-                                    src={`${envv}/uploads/kols/${item.images[0]}`}
+                                    src={`${envv}/uploads/kols/${item?.images[0]}`}
                                     alt="Category image"
                                     fill
                                     className="rounded-lg object-cover p-6 hover:p-5"

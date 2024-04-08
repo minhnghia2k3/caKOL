@@ -8,7 +8,6 @@ type Props = {
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-    // fetch data
     return {
         title: `CaKOL | Danh sách KOLs | ${params.slug.toUpperCase()}`,
         description:
