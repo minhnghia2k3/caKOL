@@ -1,11 +1,14 @@
-'use client';
+'use server';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React from 'react';
 import Logo from './Logo';
-
-export default function Header() {
-    const path = usePathname();
+import Tab from './tab';
+import { cookies } from 'next/headers';
+import { User } from 'lucide-react';
+export default async function Header() {
+    const cookieStore = cookies();
+    const theme = cookieStore.get('Authentication');
     return (
         <div className="px-5 sm:px-10 xl:px-20">
             <div className="flex items-center justify-between">
@@ -66,54 +69,22 @@ export default function Header() {
                                 className="primary-navigation site-header-nav-main hidden h-full flex-grow xl:block"
                             >
                                 <div className="primary-menu-container h-full w-full">
-                                    <ul
-                                        id="primary-menu-list"
-                                        className="menu-wrapper flex h-full items-center justify-evenly lg:flex-wrap lg:space-x-1"
-                                    >
-                                        <li className="">
-                                            <Link
-                                                href="/"
-                                                className={`menu-link main-menu-link ${path === '/' ? 'active' : ''}`}
-                                            >
-                                                Trang Chủ
-                                            </Link>
-                                        </li>
-                                        <li className="">
-                                            <Link
-                                                href="/about"
-                                                className="menu-link main-menu-link"
-                                            >
-                                                Về bookKOL
-                                            </Link>
-                                        </li>
-                                        <li className="">
-                                            <Link
-                                                href="/dichvu"
-                                                className="menu-link main-menu-link"
-                                            >
-                                                Dịch Vụ
-                                            </Link>
-                                        </li>
-                                        <li className="">
-                                            <Link
-                                                href="/danh-sach"
-                                                className="menu-link main-menu-link"
-                                            >
-                                                Danh sách KOLs
-                                            </Link>
-                                        </li>
-                                    </ul>
+                                    <Tab />
                                 </div>
                             </nav>
                         </div>
                     </div>
                     <div className="flex flex-shrink-0 justify-end py-1.5 text-neutral-700 xl:py-3.5 dark:text-neutral-100">
-                        <Link
-                            href="/login"
-                            className="rounded-lg bg-blue-700 px-4 py-2 font-bold text-white hover:bg-blue-500"
-                        >
-                            Đăng nhập
-                        </Link>
+                        {theme ? (
+                            <User />
+                        ) : (
+                            <Link
+                                href="/login"
+                                className="rounded-lg bg-blue-700 px-4 py-2 font-bold text-white hover:bg-blue-500"
+                            >
+                                Đăng nhập
+                            </Link>
+                        )}
                     </div>
                 </div>
             </div>
