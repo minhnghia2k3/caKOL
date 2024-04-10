@@ -1,14 +1,78 @@
+'use client';
+
 import Logo from '@/app/components/Logo';
 import { Metadata } from 'next';
 import Link from 'next/link';
+import {
+    RegisterBody,
+    RegisterBodyType
+} from '@/app/schemaValidation/auth.schema';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { Input } from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
+import envConfig from '@/app/config';
+import { useForm } from 'react-hook-form';
+import {
+    Form,
+    FormControl,
+    FormField,
+    FormItem,
+    FormLabel,
+    FormMessage
+} from '@/components/ui/form';
+import { LoginBodyType, LoginBody } from '@/app/schemaValidation/auth.schema';
+import { useToast } from '@/components/ui/use-toast';
+import { useRouter } from 'next/navigation';
 
 export const metadata: Metadata = {
     title: 'CaKOL | Đăng nhập',
     description: 'caKOL - Nền Tảng KOL Marketing Chuyên Nghiệp'
 };
 export default function Login() {
+    const { toast } = useToast();
+    const router = useRouter();
+
+    const form = useForm<LoginBodyType>({
+        resolver: zodResolver(LoginBody),
+        defaultValues: {
+            email: '',
+            password: ''
+        }
+    });
+    async function onSubmit(values: LoginBodyType) {
+        try {
+            const data = await fetch(
+                `${envConfig.NEXT_PUBLIC_API_ENDPOINT}/auth/login`,
+                {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(values),
+                    credentials: 'include'
+                }
+            );
+            const result = await data.json();
+            console.log(result.error);
+            console.log(result.statusCode);
+            if (result.statusCode == 400) {
+                toast({
+                    variant: 'destructive',
+                    title: 'Sai tài khoản hoặc mật khẩu',
+                    description: 'Vui lòng sử dụng tài khoản mật khẩu khác'
+                });
+            } else {
+                router.push('/');
+            }
+            // TODO: xu ly loi~ [400,409]
+            // TODO: Có data thì redirect to /login
+            console.log(result);
+        } catch (error) {
+            console.log(error);
+        }
+    }
     return (
-        <>
+        <Form {...form}>
             <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
                 <div className="sm:mx-auto sm:w-full sm:max-w-sm">
                     <Link href="/">
@@ -20,25 +84,27 @@ export default function Login() {
                 </div>
 
                 <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-                    <form className="space-y-6" action="#" method="POST">
-                        <div>
-                            <label
-                                htmlFor="email"
-                                className="block text-sm font-medium leading-6 text-gray-900"
-                            >
-                                Email
-                            </label>
-                            <div className="mt-2">
-                                <input
-                                    id="email"
-                                    name="email"
-                                    type="email"
-                                    autoComplete="email"
-                                    required
-                                    className="block w-full rounded-md border-0 px-4 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                />
-                            </div>
-                        </div>
+                    <form
+                        className="space-y-6"
+                        onSubmit={form.handleSubmit(onSubmit)}
+                        noValidate
+                    >
+                        <FormField
+                            control={form.control}
+                            name="email"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Email</FormLabel>
+                                    <FormControl>
+                                        <Input
+                                            placeholder="Nhập email của bạn (VD: example@gmail.com)"
+                                            {...field}
+                                        />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
 
                         <div>
                             <div className="flex items-center justify-between">
@@ -57,25 +123,26 @@ export default function Login() {
                                     </Link>
                                 </div>
                             </div>
-                            <div className="mt-2">
-                                <input
-                                    id="password"
-                                    name="password"
-                                    type="password"
-                                    autoComplete="current-password"
-                                    required
-                                    className="block w-full rounded-md border-0 px-4 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                />
-                            </div>
+                            <FormField
+                                control={form.control}
+                                name="password"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormControl>
+                                            <Input
+                                                placeholder="Nhập password"
+                                                {...field}
+                                                type="password"
+                                            />
+                                        </FormControl>
+                                        <FormMessage />
+                                    </FormItem>
+                                )}
+                            />
                         </div>
 
                         <div>
-                            <button
-                                type="submit"
-                                className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                            >
-                                Đăng nhập
-                            </button>
+                            <Button type="submit">Đăng nhập</Button>
                         </div>
                     </form>
 
@@ -90,6 +157,6 @@ export default function Login() {
                     </p>
                 </div>
             </div>
-        </>
+        </Form>
     );
 }

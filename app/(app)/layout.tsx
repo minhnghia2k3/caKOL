@@ -108,6 +108,13 @@ export default function RootLayout({
                 <Header />
                 {children}
                 <Footer />
+                <script
+                    async
+                    type="text/javascript"
+                    src="https://livechat.pavietnam.vn/js/script.js"
+                    id="live_chat_30s"
+                    data-lang="vi"
+                ></script>
             </body>
         </html>
     );
