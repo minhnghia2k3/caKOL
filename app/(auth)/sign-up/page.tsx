@@ -1,6 +1,7 @@
 'use client';
 
 import Logo from '@/app/components/Logo';
+import { Metadata } from 'next';
 import Link from 'next/link';
 import {
     RegisterBody,
@@ -49,6 +50,10 @@ const formSchema = z
         }
     });
 
+export const metadata: Metadata = {
+    title: 'CaKOL | Đăng ký',
+    description: 'caKOL - Nền Tảng KOL Marketing Chuyên Nghiệp'
+};
 export default function SignUp() {
     const { toast } = useToast();
     const router = useRouter();

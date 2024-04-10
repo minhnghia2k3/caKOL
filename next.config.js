@@ -3,9 +3,12 @@ const nextConfig = {
     images: {
         remotePatterns: [
             {
-                protocol: 'http',
+                hostname: 'cakol-server.vercel.app',
+                protocol: 'https'
+            },
+            {
                 hostname: 'localhost',
-                port: '3001'
+                protocol: 'http'
             }
         ]
     }

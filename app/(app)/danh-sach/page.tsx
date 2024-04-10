@@ -1,11 +1,15 @@
+import DanhSach from '@/app/components/danh-sach';
+import { ICategories } from '@/app/types/categories';
+import { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
-
+export const metadata: Metadata = {
+    title: 'CaKOL | Danh sách KOLs',
+    description:
+        'caKOL - Tổng hợp danh sách KOLs có sức ảnh hưởng trên các phương tiện truyền thông. Giúp các Doanh nghiệp, thương hiệu, nhãn hàng thực hiện các chiến dịch Marketing hiệu quả.'
+};
 const page = async () => {
-    const envv = process.env.NEXT_PUBLIC_HOST;
-    const res = await fetch(`${envv}/categories`);
-    const categories = await res.json();
     return (
         <div className=" overflow-hidden">
             <div className="_banner grid min-h-96 w-screen grid-cols-5">
@@ -34,23 +38,8 @@ const page = async () => {
                     />
                 </div>
             </div>
-            <div className="_container grid grid-cols-1 gap-4 bg-gradient-to-r from-orange-100 p-14 md:grid-cols-4">
-                {categories.map((item: any, index: any) => (
-                    <Link
-                        href={`/danh-sach/${item.slug}`}
-                        key={index}
-                        className="relative h-80 w-64 rounded-lg"
-                    >
-                        <p>tests</p>
-                        <Image
-                            src={`${envv}/uploads/categories/${item.image}`}
-                            fill
-                            alt="Category image"
-                            className="rounded-lg object-cover"
-                        />
-                    </Link>
-                ))}
-            </div>
+
+            <DanhSach />
         </div>
     );
 };

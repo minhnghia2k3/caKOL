@@ -13,6 +13,13 @@ import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import Link from 'next/link';
 import Star from '@/app/components/star';
+import { Metadata } from 'next';
+
+//TODO: replace kols
+export const metadata: Metadata = {
+    title: 'CaKOL | Homepage',
+    description: 'caKOL - Nền Tảng KOL Marketing Chuyên Nghiệp'
+};
 
 const Page = ({ params }: { params: { slug: string } }) => {
     return (

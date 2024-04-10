@@ -1,6 +1,7 @@
 'use client';
 
 import Logo from '@/app/components/Logo';
+import { Metadata } from 'next';
 import Link from 'next/link';
 import {
     RegisterBody,
@@ -23,6 +24,10 @@ import { LoginBodyType, LoginBody } from '@/app/schemaValidation/auth.schema';
 import { useToast } from '@/components/ui/use-toast';
 import { useRouter } from 'next/navigation';
 
+export const metadata: Metadata = {
+    title: 'CaKOL | Đăng nhập',
+    description: 'caKOL - Nền Tảng KOL Marketing Chuyên Nghiệp'
+};
 export default function Login() {
     const { toast } = useToast();
     const router = useRouter();
