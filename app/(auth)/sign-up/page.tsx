@@ -50,10 +50,7 @@ const formSchema = z
         }
     });
 
-export const metadata: Metadata = {
-    title: 'CaKOL | Đăng ký',
-    description: 'caKOL - Nền Tảng KOL Marketing Chuyên Nghiệp'
-};
+
 export default function SignUp() {
     const { toast } = useToast();
     const router = useRouter();
