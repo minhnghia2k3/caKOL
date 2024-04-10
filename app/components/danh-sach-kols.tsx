@@ -26,7 +26,7 @@ const DanhSachKOLs = ({ params }: { params: { slug: string } }) => {
                     return (
                         <>
                             <Link
-                                href="/"
+                                href={`/kols/${item._id}`}
                                 key={index}
                                 className="relative h-80 w-64 rounded-lg text-center hover:text-red-500 hover:shadow-xl"
                             >
