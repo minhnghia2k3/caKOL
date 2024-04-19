@@ -20,7 +20,7 @@ const DanhSachKOLs = ({ params }: { params: { slug: string } }) => {
             });
     }, []);
     return (
-        <div className="_container grid grid-cols-1 gap-4 md:grid-cols-4">
+        <div className="_container grid grid-cols-1 gap-4 md:grid-cols-6">
             {a.length > 0 ? (
                 a.map((item, index) => {
                     return (
