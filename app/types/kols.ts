@@ -1,6 +1,8 @@
 import { ICategories } from './categories';
 
 export interface IKOLs {
+    _id: string;
+
     name: string;
 
     images: string[];
@@ -33,4 +35,13 @@ export interface IKOLs {
     categories: ICategories[];
 
     active: boolean;
+}
+
+export interface ListKOLs {
+    info: {
+        unit: number;
+        currentPage: number;
+        totalPage: number;
+    };
+    data: IKOLs[];
 }
