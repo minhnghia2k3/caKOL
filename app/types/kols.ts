@@ -27,7 +27,10 @@ export interface IKOLs {
     default: [];
 
     office_hours: {
-        time: string;
+        _id: string;
+        kol: IKOLs;
+        appointmentDate: Date;
+        appointmentTime: string;
         available: boolean;
         price: string;
     }[];
