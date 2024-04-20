@@ -1,14 +1,37 @@
-'use server';
+'use client';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Logo from './Logo';
 import Tab from './tab';
-import { cookies } from 'next/headers';
-import { User } from 'lucide-react';
-export default async function Header() {
-    const cookieStore = cookies();
-    const theme = cookieStore.get('Authentication');
+import envConfig from '../config';
+import User from './user-dropdown';
+import { IUsers } from '../types/users';
+import { useRouter } from 'next/navigation';
+export default function Header() {
+    const [user, setUser] = useState<IUsers>();
+    const router = useRouter();
+    const getUserInfo = async () => {
+        const response = await fetch(
+            `${envConfig.NEXT_PUBLIC_API_ENDPOINT}/users`,
+            {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                credentials: 'include'
+            }
+        );
+        if (response.status === 401) {
+            return router.push('/login');
+        }
+        const data = await response.json();
+        setUser(data);
+    };
+
+    useEffect(() => {
+        getUserInfo();
+    }, []);
+    console.log('user: ', user);
     return (
         <div className="px-5 sm:px-10 xl:px-20">
             <div className="flex items-center justify-between">
@@ -75,8 +98,8 @@ export default async function Header() {
                         </div>
                     </div>
                     <div className="flex flex-shrink-0 justify-end py-1.5 text-neutral-700 xl:py-3.5 dark:text-neutral-100">
-                        {theme ? (
-                            <User />
+                        {user ? (
+                            <User user={user} />
                         ) : (
                             <Link
                                 href="/login"

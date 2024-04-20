@@ -87,7 +87,11 @@ const KOL = ({ params }: { params: { slug: string; cookie: any } }) => {
                 toast({
                     variant: 'success',
                     title: 'Thêm lịch hẹn thành công',
-                    description: 'Xem chi tiết tại danh sách lịch hẹn cá nhân'
+                    description: (
+                        <Link href="/settings/schedules">
+                            Xem chi tiết tại đây
+                        </Link>
+                    )
                 });
                 // Manually refetch updated data
                 fetchKOL();
