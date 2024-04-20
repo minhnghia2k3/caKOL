@@ -9,23 +9,14 @@ import { IKOLs, ListKOLs } from '@/app/types/kols';
 import envConfig from '@/app/config';
 import { Toggle } from '@/components/ui/toggle';
 import { useToast } from '@/components/ui/use-toast';
-import jwt from 'jsonwebtoken';
-import { JWTPayload } from '../types/payload';
+
 const KOL = ({ params }: { params: { slug: string; cookie: any } }) => {
     const [data, setData] = useState<IKOLs>();
     const [currentImg, setCurrentImg] = useState(0);
     const [relevant, setRelevant] = useState<ListKOLs>();
     const [selectedTime, setSelectedTime] = useState('');
-    const [user, setUser] = useState('');
 
     const { toast } = useToast();
-
-    /** Parse userId from cookies */
-    useEffect(() => {
-        if (!params.cookie) return;
-        const decoded = jwt.decode(params.cookie) as JWTPayload;
-        setUser(decoded?._id);
-    }, [params.cookie]);
 
     useEffect(() => {
         try {
@@ -74,22 +65,22 @@ const KOL = ({ params }: { params: { slug: string; cookie: any } }) => {
         }
     };
 
+    const bookSchedule = async (payload: { office_hours: string }) => {
+        return await fetch(`${envConfig.NEXT_PUBLIC_API_ENDPOINT}/carts`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            credentials: 'include',
+            body: JSON.stringify(payload)
+        });
+    };
     const addOfficeHours = async (selectedTime: string) => {
         try {
             const body = {
                 office_hours: selectedTime
             };
-            const response = await fetch(
-                `${envConfig.NEXT_PUBLIC_API_ENDPOINT}/users/${user}/carts`,
-                {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    credentials: 'include',
-                    body: JSON.stringify(body)
-                }
-            );
+            const response = await bookSchedule(body);
             const data = await response.json();
             if (response.ok) {
                 // Show success message
