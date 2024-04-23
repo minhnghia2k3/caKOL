@@ -34,6 +34,10 @@ export default function RootLayout({
                     content="caKOL - Nền Tảng KOL Marketing Chuyên Nghiệp"
                 />
                 <meta
+                    name="keywords"
+                    content="bookkol, cakol, book chi dân, cakol book ca si, thuê ca sĩ, book ca sĩ, book người nổi tiếng, booking cakol, book diễn viên, book người tâm sự, book chơi game,cách book kol mới nhất"
+                />
+                <meta
                     property="og:description"
                     content="Nền tảng KOL Marketing chuyên nghiệp và KOL Network 175.000+ thành viên sẽ đáp ứng được mọi yêu cầu của quý khách hàng | Hotline: 0833 72 1111"
                 />
