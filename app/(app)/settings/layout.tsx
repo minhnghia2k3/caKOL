@@ -16,7 +16,7 @@ const sidebarNavItems = [
         href: '/settings'
     },
     {
-        title: 'Quản lý lịch hẹn',
+        title: 'Lịch hẹn đã lưu',
         href: '/settings/schedules'
     },
     {

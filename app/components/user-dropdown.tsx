@@ -10,7 +10,6 @@ import {
     DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu';
 import Link from 'next/link';
-import SearchKOL from './search-kols';
 
 const User = ({ user }: { user: IUsers }) => {
     const sidebarNavItems = [
@@ -19,8 +18,16 @@ const User = ({ user }: { user: IUsers }) => {
             href: '/settings'
         },
         {
-            title: 'Quản lý lịch hẹn',
+            title: 'Lịch hẹn đã lưu',
             href: '/settings/schedules'
+        },
+        {
+            title: 'Biểu đồ thời gian',
+            href: '/settings/timeline'
+        },
+        {
+            title: 'Quản lý hóa đơn',
+            href: '/settings/hoadon'
         }
     ];
     const avatar = `${envConfig.NEXT_PUBLIC_API_ENDPOINT}/uploads/users/${user.avatar}`;
