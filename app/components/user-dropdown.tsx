@@ -10,6 +10,7 @@ import {
     DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu';
 import Link from 'next/link';
+import SearchKOL from './search-kols';
 
 const User = ({ user }: { user: IUsers }) => {
     const sidebarNavItems = [

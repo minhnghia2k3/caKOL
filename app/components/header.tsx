@@ -1,15 +1,18 @@
 'use client';
 import Link from 'next/link';
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import Logo from './Logo';
 import Tab from './tab';
 import envConfig from '../config';
 import User from './user-dropdown';
 import { IUsers } from '../types/users';
 import { useRouter } from 'next/navigation';
+import SearchKOL from './search-kols';
 export default function Header() {
     const [user, setUser] = useState<IUsers>();
+
     const router = useRouter();
+
     const getUserInfo = async () => {
         const response = await fetch(
             `${envConfig.NEXT_PUBLIC_API_ENDPOINT}/users`,
@@ -31,7 +34,7 @@ export default function Header() {
     useEffect(() => {
         getUserInfo();
     }, []);
-    console.log('user: ', user);
+
     return (
         <div className="px-5 sm:px-10 xl:px-20">
             <div className="flex items-center justify-between">
@@ -44,47 +47,8 @@ export default function Header() {
                             <Logo />
                         </Link>
                     </div>
-                    <div className="my-2 hidden w-[100%] px-20 md:block">
-                        <form className="">
-                            <label
-                                htmlFor="default-search"
-                                className="sr-only mb-2 text-sm font-medium text-black "
-                            >
-                                Search
-                            </label>
-                            <div className="relative">
-                                <div className="pointer-events-none absolute inset-y-0 start-0 flex items-center ps-3">
-                                    <svg
-                                        className="h-4 w-4 text-black"
-                                        aria-hidden="true"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        fill="none"
-                                        viewBox="0 0 20 20"
-                                    >
-                                        <path
-                                            stroke="currentColor"
-                                            strokeLinecap="round"
-                                            strokeLinejoin="round"
-                                            strokeWidth="2"
-                                            d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
-                                        />
-                                    </svg>
-                                </div>
-                                <input
-                                    type="search"
-                                    id="default-search"
-                                    className="block w-full rounded-lg border border-black p-4 ps-10 text-sm text-black "
-                                    placeholder="Search everything..."
-                                    required
-                                />
-                                <button
-                                    type="submit"
-                                    className="absolute bottom-2.5 end-2.5 rounded-lg bg-blue-700 px-4 py-2 text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                                >
-                                    Search
-                                </button>
-                            </div>
-                        </form>
+                    <div className="my-2 hidden w-[100%] px-20 md:block items-center justify-center">
+                        <SearchKOL />
 
                         <div className="mt-0 xl:mt-3">
                             <nav
@@ -111,46 +75,6 @@ export default function Header() {
                     </div>
                 </div>
             </div>
-            <form className="my-3 block md:hidden">
-                <label
-                    htmlFor="default-search"
-                    className="sr-only mb-2 text-sm font-medium text-black "
-                >
-                    Search
-                </label>
-                <div className="relative">
-                    <div className="pointer-events-none absolute inset-y-0 start-0 flex items-center ps-3">
-                        <svg
-                            className="h-4 w-4 text-black"
-                            aria-hidden="true"
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 20 20"
-                        >
-                            <path
-                                stroke="currentColor"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth="2"
-                                d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
-                            />
-                        </svg>
-                    </div>
-                    <input
-                        type="search"
-                        id="default-search"
-                        className="block w-full rounded-lg border border-black p-4 ps-10 text-sm text-black "
-                        placeholder="Search everything..."
-                        required
-                    />
-                    <button
-                        type="submit"
-                        className="absolute bottom-2.5 end-2.5 rounded-lg bg-blue-700 px-4 py-2 text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                    >
-                        Search
-                    </button>
-                </div>
-            </form>
         </div>
     );
 }
