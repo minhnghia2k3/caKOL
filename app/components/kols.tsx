@@ -10,7 +10,7 @@ import envConfig from '@/app/config';
 import { Toggle } from '@/components/ui/toggle';
 import { useToast } from '@/components/ui/use-toast';
 
-const KOL = ({ params }: { params: { slug: string; cookie: any } }) => {
+const KOL = ({ params }: { params: { slug: string } }) => {
     const [data, setData] = useState<IKOLs>();
     const [currentImg, setCurrentImg] = useState(0);
     const [relevant, setRelevant] = useState<ListKOLs>();
