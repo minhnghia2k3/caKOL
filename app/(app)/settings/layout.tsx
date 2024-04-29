@@ -18,6 +18,14 @@ const sidebarNavItems = [
     {
         title: 'Quản lý lịch hẹn',
         href: '/settings/schedules'
+    },
+    {
+        title: 'Xem biểu đồ thời gian',
+        href: '/settings/timeline'
+    },
+    {
+        title: 'Hóa đơn',
+        href: '/settings/hoadon'
     }
 ];
 
