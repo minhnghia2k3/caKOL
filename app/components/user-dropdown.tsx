@@ -10,6 +10,7 @@ import {
     DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu';
 import Link from 'next/link';
+import { logout } from '@/lib/utils';
 
 const User = ({ user }: { user: IUsers }) => {
     const sidebarNavItems = [
@@ -30,6 +31,8 @@ const User = ({ user }: { user: IUsers }) => {
             href: '/settings/hoadon'
         }
     ];
+
+    // Clear Authentication cookies
     const avatar = `${envConfig.NEXT_PUBLIC_API_ENDPOINT}/uploads/users/${user.avatar}`;
     return (
         <>
@@ -51,7 +54,9 @@ const User = ({ user }: { user: IUsers }) => {
                         </DropdownMenuItem>
                     ))}
                     <DropdownMenuSeparator />
-                    <DropdownMenuItem>Đăng xuất</DropdownMenuItem>
+                    <DropdownMenuItem onClick={logout}>
+                        Đăng xuất
+                    </DropdownMenuItem>
                 </DropdownMenuContent>
             </DropdownMenu>
         </>

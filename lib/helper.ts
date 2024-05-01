@@ -1,3 +1,5 @@
+import { IInvoices } from '@/app/types/invoices';
+
 export function formatCurrency(amount: number) {
     const formatted = new Intl.NumberFormat('vi-VN', {
         style: 'currency',
@@ -6,7 +8,8 @@ export function formatCurrency(amount: number) {
     return formatted;
 }
 
-export function formatDate(inputDateString: string) {
+export function formatDate(inputDateString: Date | undefined) {
+    if (!inputDateString) return '';
     // Create a new Date object from the input date string
     const dateObject = new Date(inputDateString);
 
@@ -19,4 +22,25 @@ export function formatDate(inputDateString: string) {
     const formattedDateString = `${day}/${month}/${year}`;
 
     return formattedDateString;
+}
+
+export function getDateOfWeek(dateString: Date) {
+    const date = new Date(dateString);
+    return date.getDay();
+}
+
+export function transformChartData(invoices: IInvoices[]) {
+    const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    const weeklyAmounts = [0, 0, 0, 0, 0, 0, 0];
+    invoices.forEach((invoice) => {
+        const dayIndex = getDateOfWeek(invoice.createdAt);
+        weeklyAmounts[dayIndex] += invoice.amount;
+    });
+
+    const outputData = daysOfWeek.map((dayName, index) => ({
+        name: dayName,
+        amount: weeklyAmounts[index]
+    }));
+
+    return outputData;
 }

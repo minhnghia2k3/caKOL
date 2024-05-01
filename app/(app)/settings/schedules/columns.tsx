@@ -57,7 +57,7 @@ export const columns = ({
         header: 'Day',
         cell: ({ row }) => {
             const date = row.getValue('appointmentDate');
-            const formatted = formatDate(date as string);
+            const formatted = formatDate(date as Date);
             return <div className="font-medium">{formatted}</div>;
         }
     },
