@@ -1,8 +1,6 @@
 import DanhSach from '@/app/components/danh-sach';
-import { ICategories } from '@/app/types/categories';
 import { Metadata } from 'next';
 import Image from 'next/image';
-import Link from 'next/link';
 import React from 'react';
 export const metadata: Metadata = {
     title: 'CaKOL | Danh sách KOLs',

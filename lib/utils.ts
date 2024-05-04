@@ -1,10 +1,11 @@
 import envConfig from '@/app/config';
+import { ICategories } from '@/app/types/categories';
+import { IFormData } from '@/app/types/form-data';
 import { IInvoices } from '@/app/types/invoices';
 import { IKOLs } from '@/app/types/kols';
 import { ListData } from '@/app/types/list-data';
 import { IUsers } from '@/app/types/users';
 import { type ClassValue, clsx } from 'clsx';
-import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
 import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]) {
@@ -14,6 +15,25 @@ export function cn(...inputs: ClassValue[]) {
 export const getUserInfo = async (): Promise<IUsers> => {
     const response = await fetch(
         `${envConfig.NEXT_PUBLIC_API_ENDPOINT}/users`,
+        {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            credentials: 'include'
+        }
+    );
+
+    if (!response.ok) {
+        throw new Error(response.statusText);
+    }
+    const data = await response.json();
+    return data;
+};
+
+export const getKol = async (kolId: string): Promise<IKOLs> => {
+    const response = await fetch(
+        `${envConfig.NEXT_PUBLIC_API_ENDPOINT}/kols/${kolId}`,
         {
             method: 'GET',
             headers: {
@@ -139,6 +159,87 @@ export const fetchKOLs = async ({
     }
 };
 
+export const createKOL = async (formData: IFormData): Promise<IKOLs> => {
+    try {
+        let url = `${envConfig.NEXT_PUBLIC_API_ENDPOINT}/kols`;
+        const formDataToSend = new FormData();
+        formDataToSend.append('name', formData.name);
+        formDataToSend.append('location', formData.location);
+        formDataToSend.append('major', formData.major);
+        formDataToSend.append('bio', formData.bio);
+        formDataToSend.append('yob', formData.yob);
+
+        if (formData.categories) {
+            formDataToSend.append('categories', formData.categories);
+        }
+
+        // Append files from FileList (if any)
+        if (formData.images) {
+            for (let i = 0; i < formData.images.length; i++) {
+                formDataToSend.append(`images`, formData.images[i]);
+            }
+        }
+
+        const response = await fetch(url, {
+            method: 'POST',
+
+            body: formDataToSend,
+            credentials: 'include'
+        });
+        if (!response.ok) {
+            throw new Error('Failed to create KOL');
+        }
+        return await response.json();
+    } catch (error: any) {
+        throw new Error(error);
+    }
+};
+
+export const updateKOL = async (kolId: string, formData: IFormData) => {
+    try {
+        let url = `${envConfig.NEXT_PUBLIC_API_ENDPOINT}/kols/${kolId}`;
+        const formDataToSend = new FormData();
+        formDataToSend.append('name', formData.name);
+        formDataToSend.append('location', formData.location);
+        formDataToSend.append('major', formData.major);
+        formDataToSend.append('bio', formData.bio);
+        formDataToSend.append('yob', formData.yob);
+
+        // Append files from FileList (if any)
+        if (formData.images) {
+            for (let i = 0; i < formData.images.length; i++) {
+                formDataToSend.append(`images`, formData.images[i]);
+            }
+        }
+
+        const response = await fetch(url, {
+            method: 'PUT',
+            body: formDataToSend,
+            credentials: 'include'
+        });
+        return response.ok;
+    } catch (error: any) {
+        throw new Error(error);
+    }
+};
+
+export const fetchCategories = async (): Promise<ICategories[]> => {
+    try {
+        let url = `${envConfig.NEXT_PUBLIC_API_ENDPOINT}/categories`;
+
+        const response = await fetch(url, {
+            method: 'GET'
+        });
+
+        if (!response.ok) {
+            throw new Error(response.statusText);
+        }
+
+        return await response.json();
+    } catch (error: any) {
+        throw new Error(error);
+    }
+};
 export const logout = async () => {
     const response = await fetch(
         `${envConfig.NEXT_PUBLIC_API_ENDPOINT}/auth/logout`,
