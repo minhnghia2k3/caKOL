@@ -8,8 +8,6 @@ import {
     MdShoppingBag,
     MdAnalytics,
     MdPeople,
-    MdOutlineSettings,
-    MdHelpCenter,
     MdLogout
 } from 'react-icons/md';
 import { useEffect, useState } from 'react';
@@ -17,6 +15,7 @@ import { getUserInfo, logout } from '@/lib/utils';
 import { IUsers, Roles } from '@/app/types/users';
 import { Button } from '@/components/ui/button';
 import { useRouter } from 'next/navigation';
+import { Clock2 } from 'lucide-react';
 const Sidebar = () => {
     const router = useRouter();
     const menuItems = [
@@ -34,9 +33,14 @@ const Sidebar = () => {
                     icon: <MdSupervisedUserCircle />
                 },
                 {
-                    title: 'Products',
+                    title: 'KOLs',
                     path: '/admin/products',
                     icon: <MdShoppingBag />
+                },
+                {
+                    title: 'Office hours',
+                    path: '/admin/office-hours',
+                    icon: <Clock2 />
                 }
             ]
         },

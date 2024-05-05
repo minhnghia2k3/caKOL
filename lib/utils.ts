@@ -1,9 +1,11 @@
+import { OhFormData } from '@/app/(admin)/admin/office-hours/add/page';
 import envConfig from '@/app/config';
 import { ICategories } from '@/app/types/categories';
 import { IFormData } from '@/app/types/form-data';
 import { IInvoices } from '@/app/types/invoices';
 import { IKOLs } from '@/app/types/kols';
 import { ListData } from '@/app/types/list-data';
+import { IOfficeHours } from '@/app/types/office-hours';
 import { IUsers } from '@/app/types/users';
 import { type ClassValue, clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
@@ -120,6 +122,27 @@ export const deleteKol = async (kolId: string): Promise<IKOLs> => {
     }
 };
 
+export const deleteOh = async (ohId: string): Promise<IKOLs> => {
+    try {
+        const response = await fetch(
+            `${envConfig.NEXT_PUBLIC_API_ENDPOINT}/office-hours/${ohId}`,
+            {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                credentials: 'include'
+            }
+        );
+        if (!response.ok) {
+            throw new Error(response.statusText);
+        }
+        return await response.json();
+    } catch (error) {
+        throw error;
+    }
+};
+
 export const fetchKOLs = async ({
     limit = 10,
     page = 1,
@@ -156,6 +179,24 @@ export const fetchKOLs = async ({
         return await response.json();
     } catch (error: any) {
         throw new Error(error.message);
+    }
+};
+
+export const fetchOfficeHours = async (): Promise<ListData<IOfficeHours>> => {
+    try {
+        let url = `${envConfig.NEXT_PUBLIC_API_ENDPOINT}/office-hours`;
+
+        const response = await fetch(url, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            credentials: 'include'
+        });
+
+        return await response.json();
+    } catch (error: any) {
+        throw new Error(error);
     }
 };
 
@@ -235,6 +276,28 @@ export const fetchCategories = async (): Promise<ICategories[]> => {
             throw new Error(response.statusText);
         }
 
+        return await response.json();
+    } catch (error: any) {
+        throw new Error(error);
+    }
+};
+
+export const createOh = async (formData: OhFormData): Promise<IOfficeHours> => {
+    try {
+        let url = `${envConfig.NEXT_PUBLIC_API_ENDPOINT}/office-hours`;
+
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formData),
+            credentials: 'include'
+        });
+
+        if (!response.ok) {
+            throw new Error('Failed to create new office hour');
+        }
         return await response.json();
     } catch (error: any) {
         throw new Error(error);
