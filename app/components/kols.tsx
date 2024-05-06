@@ -9,13 +9,14 @@ import { IKOLs, ListKOLs } from '@/app/types/kols';
 import envConfig from '@/app/config';
 import { Toggle } from '@/components/ui/toggle';
 import { useToast } from '@/components/ui/use-toast';
+import { useRouter } from 'next/navigation';
 
 const KOL = ({ params }: { params: { slug: string } }) => {
     const [data, setData] = useState<IKOLs>();
     const [currentImg, setCurrentImg] = useState(0);
     const [relevant, setRelevant] = useState<ListKOLs>();
     const [selectedTime, setSelectedTime] = useState('');
-
+    const router = useRouter();
     const { toast } = useToast();
 
     useEffect(() => {
@@ -75,7 +76,7 @@ const KOL = ({ params }: { params: { slug: string } }) => {
             body: JSON.stringify(payload)
         });
     };
-    const addOfficeHours = async (selectedTime: string) => {
+    const addToCart = async (selectedTime: string) => {
         try {
             const body = {
                 office_hours: selectedTime
@@ -96,12 +97,14 @@ const KOL = ({ params }: { params: { slug: string } }) => {
                 // Manually refetch updated data
                 fetchKOL();
             } else {
-                // Handle error response
                 toast({
                     variant: 'destructive',
                     title: data.statusCode || 'Error',
                     description: data.message || 'An error occurred'
                 });
+                if (response.status === 401) {
+                    router.push('/login');
+                }
             }
         } catch (error) {
             console.error('Error adding office hours:', error);
@@ -248,7 +251,7 @@ const KOL = ({ params }: { params: { slug: string } }) => {
                     <div className="mt-5">
                         <Button
                             className="bg-[#1d4ed8] w-[100%] rounded-xl"
-                            onClick={() => addOfficeHours(selectedTime)}
+                            onClick={() => addToCart(selectedTime)}
                             disabled={!selectedTime}
                         >
                             Thêm vào lịch hẹn

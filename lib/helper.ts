@@ -45,6 +45,7 @@ export function getDateOfWeek(dateString: Date) {
 }
 
 export function transformChartData(invoices: IInvoices[]) {
+    if (!invoices || invoices.length < 0) return;
     const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
     const weeklyAmounts = [0, 0, 0, 0, 0, 0, 0];
     invoices.forEach((invoice) => {

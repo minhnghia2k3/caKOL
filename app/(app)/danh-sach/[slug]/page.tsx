@@ -22,6 +22,8 @@ const Page = ({ params }: { params: { slug: string } }) => {
                 <p className="text-sm text-black">
                     <Link href="/">Trang chủ</Link>
                     {' / '}
+                    <Link href="/danh-sach">Danh sách</Link>
+                    {' / '}
                     <label className="text-gray-500">{params.slug}</label>
                 </p>
                 <div className="_filter flex items-start">

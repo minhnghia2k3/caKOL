@@ -77,6 +77,9 @@ export const getAllInvoices = async (): Promise<IInvoices[]> => {
             credentials: 'include'
         }
     );
+    if (!response.ok) {
+        throw new Error('Failed to fetch all invoices');
+    }
     return await response.json();
 };
 

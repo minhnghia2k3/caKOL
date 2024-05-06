@@ -49,7 +49,7 @@ const User = ({ user }: { user: IUsers }) => {
                     </DropdownMenuLabel>
                     <DropdownMenuSeparator />
                     {sidebarNavItems.map((item, index) => (
-                        <DropdownMenuItem key={index}>
+                        <DropdownMenuItem key={index} asChild>
                             <Link href={item.href}>{item.title}</Link>
                         </DropdownMenuItem>
                     ))}
