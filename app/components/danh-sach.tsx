@@ -3,15 +3,18 @@ import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import { ICategories } from '../types/categories';
 import Image from 'next/image';
+import { fetchCategories } from '@/lib/utils';
 
 const DanhSach = () => {
     const envv = process.env.NEXT_PUBLIC_HOST;
 
     const [categories, setCategories] = useState<ICategories[]>([]);
     useEffect(() => {
-        fetch(`${envv}/categories`)
-            .then((response) => response.json())
-            .then((data) => setCategories(data));
+        const getAllCategories = async () => {
+            const data = await fetchCategories();
+            setCategories(data);
+        };
+        getAllCategories();
     }, []);
 
     return (

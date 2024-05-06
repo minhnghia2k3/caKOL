@@ -4,11 +4,10 @@ export enum Roles {
 }
 
 export interface IUsers {
+    _id: string;
     email: string;
-
     avatar: string;
-
     type: Roles;
-
     active: boolean;
+    createdAt: Date;
 }

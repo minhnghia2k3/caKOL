@@ -14,13 +14,13 @@ import { Button } from '@/components/ui/button';
 import { Search } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 const SearchKOL = () => {
-    const [searchInput, setSearchInput] = useState<string>('');
+    // const [searchInput, setSearchInput] = useState<string>('');
     const [open, setOpen] = React.useState(false);
     const [listKOLs, setListKOLs] = useState<ListData<IKOLs>>();
     const router = useRouter();
     const fetchKOLs = async () => {
         const response = await fetch(
-            `${envConfig.NEXT_PUBLIC_API_ENDPOINT}/kols?limit=99&name=${searchInput}`,
+            `${envConfig.NEXT_PUBLIC_API_ENDPOINT}/kols?limit=99`,
             {
                 method: 'GET',
                 headers: {
@@ -42,8 +42,8 @@ const SearchKOL = () => {
         };
         document.addEventListener('keydown', down);
 
+        fetchKOLs();
         return () => {
-            fetchKOLs();
             document.removeEventListener('keydown', down);
         };
     }, []);

@@ -1,38 +1,25 @@
 'use client';
 import Link from 'next/link';
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Logo from './Logo';
 import Tab from './tab';
-import envConfig from '../config';
 import User from './user-dropdown';
 import { IUsers } from '../types/users';
-import { useRouter } from 'next/navigation';
 import SearchKOL from './search-kols';
+import { getUserInfo } from '@/lib/utils';
 export default function Header() {
     const [user, setUser] = useState<IUsers>();
 
-    const router = useRouter();
-
-    const getUserInfo = async () => {
-        const response = await fetch(
-            `${envConfig.NEXT_PUBLIC_API_ENDPOINT}/users`,
-            {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                credentials: 'include'
-            }
-        );
-        if (response.status === 401) {
-            return router.push('/login');
-        }
-        const data = await response.json();
-        setUser(data);
-    };
-
     useEffect(() => {
-        getUserInfo();
+        const fetchCurrentUser = async () => {
+            try {
+                const user = await getUserInfo();
+                setUser(user);
+            } catch (error) {
+                console.log(error);
+            }
+        };
+        fetchCurrentUser();
     }, []);
 
     return (
