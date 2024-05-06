@@ -1,3 +1,5 @@
+import { IUsers } from './users';
+
 export enum Status {
     'Cancel' = 0,
     'Pending' = 1,
@@ -5,7 +7,7 @@ export enum Status {
 }
 export interface IInvoices {
     _id: string;
-    user: string;
+    user: IUsers;
     orderId: string;
     orderInfo: string;
     paymentMethod: string;

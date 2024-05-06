@@ -38,6 +38,8 @@ export interface IKOLs {
     categories: ICategories[];
 
     active: boolean;
+
+    createdAt: Date;
 }
 
 export interface ListKOLs {
