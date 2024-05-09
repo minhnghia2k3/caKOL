@@ -50,7 +50,6 @@ const formSchema = z
         }
     });
 
-
 export default function SignUp() {
     const { toast } = useToast();
     const router = useRouter();
@@ -64,11 +63,6 @@ export default function SignUp() {
         }
     });
     async function onSubmit(values: z.infer<typeof formSchema>) {
-        console.log('values: ', values);
-        /**sêrver
-         *  { email: string,
-         *      password: string}
-         */
         try {
             const data = await fetch(
                 `${envConfig.NEXT_PUBLIC_API_ENDPOINT}/users`,
@@ -84,8 +78,7 @@ export default function SignUp() {
                 }
             );
             const result = await data.json();
-            console.log(result.error);
-            console.log(result.statusCode);
+
             if (result.statusCode == 409) {
                 toast({
                     variant: 'destructive',
@@ -95,9 +88,6 @@ export default function SignUp() {
             } else {
                 router.push('/login');
             }
-            // TODO: xu ly loi~ [400,409]
-            // TODO: Có data thì redirect to /login
-            console.log(result);
         } catch (error) {
             console.log(error);
         }

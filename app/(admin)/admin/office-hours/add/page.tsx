@@ -36,7 +36,6 @@ export default function Component() {
         appointmentTime: '',
         price: 0
     });
-    console.log(formData);
 
     useEffect(() => {
         const getAllKOLs = async () => {

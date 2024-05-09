@@ -72,7 +72,7 @@ export default function Component() {
 
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        // console.log(formData); // formData contains all the form field values
+
         // Now you can submit formData to your API or perform other actions
         const kol = await createKOL(formData);
         if (kol) {

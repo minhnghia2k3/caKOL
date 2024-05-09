@@ -49,8 +49,7 @@ export default function Login() {
                 }
             );
             const result = await data.json();
-            console.log(result.error);
-            console.log(result.statusCode);
+
             if (result.statusCode == 400) {
                 toast({
                     variant: 'destructive',
@@ -60,9 +59,6 @@ export default function Login() {
             } else {
                 router.push('/');
             }
-            // TODO: xu ly loi~ [400,409]
-            // TODO: Có data thì redirect to /login
-            console.log(result);
         } catch (error) {
             console.log(error);
         }

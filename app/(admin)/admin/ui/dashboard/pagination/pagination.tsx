@@ -10,7 +10,6 @@ export interface Info {
     totalPage: number;
 }
 const Pagination = ({ info }: { info: Info }) => {
-    console.log('info: ', info);
     const searchParams = useSearchParams();
     const { replace } = useRouter();
     const pathname = usePathname();
