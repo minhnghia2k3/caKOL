@@ -66,18 +66,18 @@ const Sidebar = () => {
         const fetchCurrentUser = async () => {
             try {
                 const user = await getUserInfo();
-                console.log('user: ', user);
-                if (user.type !== 1) {
+                if (!user || user.type !== 1) {
                     return router.push('/');
                 }
+                if (!user) return;
                 setUser(user);
             } catch (error: any) {
-                if (error.statusCode === 401) return router.push('/login');
                 console.log('error: ', error);
             }
         };
         fetchCurrentUser();
     }, [router]);
+
     return (
         <div className={styles.container}>
             <div className={styles.user}>
@@ -106,8 +106,12 @@ const Sidebar = () => {
                     </li>
                 ))}
             </ul>
-            <Button variant={'outline'} className={styles.logout}>
-                <MdLogout onClick={logout} />
+            <Button
+                variant={'outline'}
+                className={styles.logout}
+                onClick={logout}
+            >
+                <MdLogout />
                 Logout
             </Button>
         </div>

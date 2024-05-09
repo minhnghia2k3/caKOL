@@ -14,7 +14,7 @@ export function cn(...inputs: ClassValue[]) {
     return twMerge(clsx(inputs));
 }
 
-export const getUserInfo = async (): Promise<IUsers> => {
+export const getUserInfo = async (): Promise<IUsers | null> => {
     const response = await fetch(
         `${envConfig.NEXT_PUBLIC_API_ENDPOINT}/users`,
         {
@@ -25,7 +25,7 @@ export const getUserInfo = async (): Promise<IUsers> => {
             credentials: 'include'
         }
     );
-
+    if (!response.ok) return null;
     const data = await response.json();
     return data;
 };

@@ -14,6 +14,7 @@ export default function Header() {
         const fetchCurrentUser = async () => {
             try {
                 const user = await getUserInfo();
+                if (!user) return;
                 setUser(user);
             } catch (error) {
                 console.log(error);
