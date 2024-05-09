@@ -69,6 +69,7 @@ const SearchKOL = () => {
                 <CommandInput placeholder="Search.." />
                 <CommandList>
                     {listKOLs &&
+                        listKOLs.data?.length > 0 &&
                         listKOLs.data.map((kol, index) => (
                             <CommandItem
                                 key={index}
