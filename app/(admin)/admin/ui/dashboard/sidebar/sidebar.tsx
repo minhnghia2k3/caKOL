@@ -66,13 +66,14 @@ const Sidebar = () => {
         const fetchCurrentUser = async () => {
             try {
                 const user = await getUserInfo();
+                console.log('user: ', user);
                 if (user.type !== 1) {
-                    router.push('/');
+                    return router.push('/');
                 }
                 setUser(user);
-            } catch (error) {
-                router.push('/login');
-                console.log(error);
+            } catch (error: any) {
+                if (error.statusCode === 401) return router.push('/login');
+                console.log('error: ', error);
             }
         };
         fetchCurrentUser();

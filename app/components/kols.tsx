@@ -334,7 +334,7 @@ const KOL = ({ params }: { params: { slug: string } }) => {
                 <h1 className="text-2xl font-bold">KOL tương tự</h1>
                 <div className="flex h-[300px] w-[100%] gap-8 mt-5">
                     {relevant &&
-                        relevant.data.length > 0 &&
+                        relevant.data?.length > 0 &&
                         relevant.data.map((item, index) => (
                             <Link
                                 href={item._id}
