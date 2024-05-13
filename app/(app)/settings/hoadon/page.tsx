@@ -16,7 +16,7 @@ import clsx from 'clsx';
 import { formatCurrency } from '@/lib/helper';
 
 export default function HoaDon() {
-    const [invoices, setInvoices] = useState<IInvoices[]>();
+    const [invoices, setInvoices] = useState<IInvoices[]>([]);
     let total = 0;
     const fetchInvoices = async () => {
         try {
@@ -31,6 +31,9 @@ export default function HoaDon() {
                 }
             );
 
+            if (!response.ok) {
+                setInvoices([]);
+            }
             const data = await response.json();
             setInvoices(data);
         } catch (error) {
@@ -53,7 +56,7 @@ export default function HoaDon() {
                     </TableRow>
                 </TableHeader>
                 <TableBody>
-                    {invoices &&
+                    {invoices.length > 0 &&
                         invoices.map((invoice) => {
                             total += invoice.amount;
                             return (
