@@ -6,27 +6,34 @@ import styles from '../ui/dashboard/users/users.module.css';
 import { IOfficeHours } from '@/app/types/office-hours';
 import { useToast } from '@/components/ui/use-toast';
 import { deleteOh, fetchOfficeHours } from '@/lib/utils';
-import { Info } from '../ui/dashboard/pagination/pagination';
 import { formatCurrency, formatDate } from '@/lib/helper';
 import { Button } from '@/components/ui/button';
+import Pagination, { Info } from '../ui/dashboard/pagination/pagination';
+import { SearchParams } from '../products/page';
 
-const OfficeHours = () => {
+const OfficeHours = ({ searchParams }: { searchParams: SearchParams }) => {
     const [ohs, setOhs] = useState<IOfficeHours[]>([]);
     const [info, setInfo] = useState<Info>({
         unit: 0,
         currentPage: 1,
         totalPage: 0
     });
+    console.log('info: ', info);
     const { toast } = useToast();
 
     useEffect(() => {
         const fetchAllOhs = async () => {
-            const { info, data } = await fetchOfficeHours();
+            const limit = searchParams?.limit || 10;
+            const page = searchParams?.page || 1;
+            const { info, data } = await fetchOfficeHours({
+                limit,
+                page
+            });
             if (data) setOhs(data);
             if (info) setInfo(info);
         };
         fetchAllOhs();
-    }, []);
+    }, [searchParams]);
 
     const handleDeleteOh = async (ohId: string) => {
         try {
@@ -36,7 +43,7 @@ const OfficeHours = () => {
                     title: 'Xóa office hour thành công',
                     variant: 'success'
                 });
-                const ohs = await fetchOfficeHours();
+                const ohs = await fetchOfficeHours({});
                 setOhs(ohs.data);
             }
         } catch (error) {
@@ -89,7 +96,7 @@ const OfficeHours = () => {
                         ))}
                 </tbody>
             </table>
-            {/* <Pagination count={count} /> */}
+            <Pagination info={info} />
         </div>
     );
 };

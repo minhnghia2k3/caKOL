@@ -11,7 +11,7 @@ import { formatDate } from '@/lib/helper';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/components/ui/use-toast';
 
-interface SearchParams {
+export interface SearchParams {
     limit: number;
     page: number;
     name: string;

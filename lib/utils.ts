@@ -182,9 +182,15 @@ export const fetchKOLs = async ({
     }
 };
 
-export const fetchOfficeHours = async (): Promise<ListData<IOfficeHours>> => {
+export const fetchOfficeHours = async ({
+    limit = 10,
+    page = 1
+}: {
+    limit?: number;
+    page?: number;
+}): Promise<ListData<IOfficeHours>> => {
     try {
-        let url = `${envConfig.NEXT_PUBLIC_API_ENDPOINT}/office-hours`;
+        let url = `${envConfig.NEXT_PUBLIC_API_ENDPOINT}/office-hours?limit=${limit}&page=${page}`;
 
         const response = await fetch(url, {
             method: 'GET',
