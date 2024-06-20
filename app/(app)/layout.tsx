@@ -4,6 +4,8 @@ import '../globals.css';
 import Header from '../components/header';
 import Footer from '../components/footer';
 import { Toaster } from '@/components/ui/toaster';
+import { GoogleAnalytics } from '@next/third-parties/google';
+
 const inter = Inter({ subsets: ['latin'] });
 export default function RootLayout({
     children
@@ -119,6 +121,7 @@ export default function RootLayout({
                     id="live_chat_30s"
                     data-lang="vi"
                 ></script>
+                <GoogleAnalytics gaId="G-7H157975EK" />
             </body>
         </html>
     );
